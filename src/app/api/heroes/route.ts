@@ -9,7 +9,7 @@ interface Hero {
 }
 
 export async function GET() {
-    const filePath = path.join(process.cwd(), 'src', 'app', 'data', 'heroes.json');
+  const filePath = path.join(process.cwd(), 'src', 'app', 'data', 'heroes.json');
 
   try {
     const fileContent = fs.readFileSync(filePath, 'utf8');
