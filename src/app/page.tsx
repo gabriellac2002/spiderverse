@@ -1,10 +1,11 @@
 import { IHeroData } from '@/interfaces/heroes';
 import Header from './components/Header';
 import HeroesList from './components/HeroesList';
+import styles from "./page.module.scss";
 
 async function getHeroesData(): Promise<IHeroData[]> {
   const res = await fetch(`${process.env.DOMAIN_ORIGIN}/api/heroes`, {
-    next: { revalidate: 60 }, // Revalida a cada 60 segundos
+    next: { revalidate: 60 }, 
   });
 
   if (!res.ok) {
@@ -21,7 +22,10 @@ export default async function Home() {
   return (
     <>
       <Header />
-      <HeroesList heroes={heroes} />
+      <main className={styles.main}>
+        <HeroesList heroes={heroes} />
+      </main>
     </>
+
   );
 }
