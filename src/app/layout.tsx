@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./global.scss"
+import { HeroProvider } from "@/contexts/HeroContext";
 
 export const metadata: Metadata = {
   title: "Spiderverse",
@@ -13,7 +14,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body>{children}</body>
+      <body>
+        <HeroProvider>
+          {children}
+        </HeroProvider>
+      </body>
     </html>
   );
 }
