@@ -17,12 +17,12 @@ interface IProps {
 
 export default function HeroDetails({ data }: IProps) {
     console.log(data)
-    // const { id, name, universe, details } = data;
+    const { id, name, universe, details } = data;
     
 
     return (
         <div className={quicksand.className}>
-            {/* <h1 className={`${spidermanFont.className} ${styles.title}`}>
+            <h1 className={`${spidermanFont.className} ${styles.title}`}>
                 {name} (Universo-{universe})
             </h1>
             <div className={styles.details}>
@@ -60,7 +60,7 @@ export default function HeroDetails({ data }: IProps) {
                     width={80}
                     height={122}
                 />
-            </div> */}
+            </div>
         </div>
     );
 }
