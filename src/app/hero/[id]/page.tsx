@@ -1,4 +1,5 @@
 "use client";
+import Carousel from "@/app/components/Carousel";
 import Header from "@/app/components/Header";
 import { useHeroes } from "@/contexts/HeroContext";
 
@@ -11,10 +12,11 @@ interface IProps{
 
 export default function Hero({ params: { id }}: IProps){
     const { heroes } = useHeroes();
+    console.log('context', heroes)
     return(
         <>
             <Header />
-            <h1>Spider selecionado: {id}</h1>
+            <Carousel heroes={heroes} activeId={id}/>
         </>
     );
 }

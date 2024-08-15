@@ -1,17 +1,13 @@
 "use client";
 import { spidermanFont } from '@/fonts';
-import { IHeroData } from '@/interfaces/heroes';
 import styles from "./heroesList.module.scss";
 import HeroPicture from '../HeroPicture';
 import { motion } from "framer-motion";
 import Link from 'next/link';
+import { useHeroes } from '@/contexts/HeroContext';
 
-
-interface IProps {
-  heroes: IHeroData[];
-}
-
-export default function HeroesList({ heroes }: IProps) {
+export default function HeroesList() {
+  const { heroes } = useHeroes(); 
   return (
     <>
       <motion.h1
