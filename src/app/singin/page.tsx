@@ -24,7 +24,9 @@ export default function Signin() {
         try {
             const user = await singnup(email, password);
             setMessage({type: 'success', text: `Cadastro realizado com sucesso! Bem-vindo, ${user.email}.`});
-
+            setTimeout(() => {
+                window.location.href = '/';
+            }, 2000);
              
         } catch (error: any) {
             setMessage({type: 'error', text: `Erro ao realizar o cadastro: ${error.message}`});
