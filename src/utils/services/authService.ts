@@ -1,7 +1,7 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {auth} from "../firebase/firebaseServer"
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export async function singnup(email: string, password: string) {
-    const auth = getAuth();
 
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);

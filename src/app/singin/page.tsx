@@ -1,5 +1,7 @@
+"use client";
 import React, { useState } from 'react';
-import styles from './signin.module.scss';
+import { useRouter } from 'next/router';
+import styles from './singin.module.scss';
 import Header from '../components/Header';
 import { spidermanFont } from "@/fonts";
 import { Quicksand } from "next/font/google";
@@ -13,19 +15,19 @@ const quicksand = Quicksand({
 export default function Signin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [message, setMessage] = useState<{type: string, text: string} | null>(null);
 
-    // Função para lidar com o cadastro do usuário
+   
     const handleSignup = async (e: React.FormEvent) => {
         e.preventDefault();
-        
+       
         try {
             const user = await singnup(email, password);
-            console.log("Usuário cadastrado com sucesso:", user);
-            
+            setMessage({type: 'success', text: `Cadastro realizado com sucesso! Bem-vindo, ${user.email}.`});
+
+             
         } catch (error: any) {
-            setError(error.message);
-            console.error("Erro ao cadastrar:", error);
+            setMessage({type: 'error', text: `Erro ao realizar o cadastro: ${error.message}`});
         }
     };
 
@@ -35,6 +37,20 @@ export default function Signin() {
             <div className={styles.container}>
                 <div className={styles.loginContainer}>
                     <h1 className={`${spidermanFont.className} ${styles.loginHeader}`}>Cadastre-se</h1>
+                    
+                    {message && (
+                        <div 
+                            className={`p-4 mb-4 text-sm rounded-lg ${
+                                message.type === 'success' ? 'text-green-800 bg-green-50 dark:bg-gray-800 dark:text-green-400' :
+                                message.type === 'error' ? 'text-red-800 bg-red-50 dark:bg-gray-800 dark:text-red-400' :
+                                ''
+                            }`}
+                            role="alert"
+                        >
+                            <span className="font-medium">{message.type === 'success' ? 'Success!' : 'Error!'}</span> {message.text}
+                        </div>
+                    )}
+                    
                     <form className={styles.loginForm} onSubmit={handleSignup}>
                         <label>Email</label>
                         <input 
@@ -57,8 +73,6 @@ export default function Signin() {
                         />
 
                         <button type="submit">Cadastrar</button>
-                        
-                        {error && <p className={styles.error}>{error}</p>}
                     </form>
                 </div>
             </div>
