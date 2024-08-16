@@ -1,0 +1,55 @@
+@import "../variables.scss";
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background-color: var(background); 
+}
+
+.loginContainer {
+  background-color:var(background); 
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.loginHeader {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #FFFF;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginForm label {
+  margin-bottom: 0.5rem;
+  color: #FFFF;
+}
+
+.loginForm input {
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #FFFF;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.loginForm button {
+  padding: 0.75rem;
+  background-color:#0056ba; 
+  border: none;
+  border-radius: 4px;
+  color: #FFFF;
+  font-size: 1rem;
+  cursor: pointer;
+    margin-bottom: 0.5rem;
+}
